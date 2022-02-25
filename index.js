@@ -130,11 +130,25 @@ const dataObj = JSON.parse(data);
 // _________________________________________________________
 
 const server = http.createServer((req, res) => {
+  // #11 ___________________________________________________
+  const baseURL = `http://${req.headers.host}`;
+  const requestURL = new URL(req.url, baseURL);
+  // => Object conatining URL data
+  // console.log(requestURL);
+  const pathName = requestURL.pathname;
+  const query = requestURL.searchParams.get("id");
+  // .searchParams returns this: URLSearchParams { 'id' => '1' }
+  // => ID was inside 'searchParams'
+  // ".get('id')"  => to get id number
+
+  /* -------- NOT WORKING ---------
   const { query, pathName } = url.parse(req.url, true);
   // url.parse => takes a URL string, parses it, and returns a URL object
   // => returns a big object containing all the parse data
   // query => URL id
   // pathName => URL name
+  */
+  // _______________________________________________________
 
   // #10 OVERVIEW page
   if (pathName === "/" || pathName === "/overview") {
@@ -153,8 +167,13 @@ const server = http.createServer((req, res) => {
 
     // #10 PRODUCT page
   } else if (pathName === "/product") {
-    console.log(query);
-    res.end("This is the PRODUCT");
+    // #11 _________________________________________________
+    res.writeHead(200, { "COntent-type": "text/html" });
+    const product = dataObj[query];
+    const output = replaceTemplate(tempProduct, product);
+
+    res.end(output);
+    // _____________________________________________________
 
     // #10 API
     // #8 ___________________________________________________

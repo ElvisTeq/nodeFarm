@@ -169,10 +169,17 @@
 // #11
 // => Parsing variables from URLs
 
+// *********************** Does not work anymore ********************
 // ------------------------------------- url.parse(req.url, true)
 // url.parse => takes a URL string, parses it, and returns a URL object
 // req.url => URL string
 // true => everything after the '?' in the URL will be return
+
+// ------------------------------------- new URL(req.url, baseURL)
+// const requestURL = new URL(req.url, baseURL);
+// req.url => product?id=0
+// baseURL => entire/complete URL
+// requestURL => object containing all data from the url
 
 ///////////////////////////////////////////////////////////////////
 
