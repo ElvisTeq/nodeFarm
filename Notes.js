@@ -169,6 +169,11 @@
 // #11
 // => Parsing variables from URLs
 
+// ------------------------------------- url.parse(req.url, true)
+// url.parse => takes a URL string, parses it, and returns a URL object
+// req.url => URL string
+// true => everything after the '?' in the URL will be return
+
 ///////////////////////////////////////////////////////////////////
 
 // #12

@@ -130,7 +130,11 @@ const dataObj = JSON.parse(data);
 // _________________________________________________________
 
 const server = http.createServer((req, res) => {
-  const pathName = req.url;
+  const { query, pathName } = url.parse(req.url, true);
+  // url.parse => takes a URL string, parses it, and returns a URL object
+  // => returns a big object containing all the parse data
+  // query => URL id
+  // pathName => URL name
 
   // #10 OVERVIEW page
   if (pathName === "/" || pathName === "/overview") {
@@ -149,6 +153,7 @@ const server = http.createServer((req, res) => {
 
     // #10 PRODUCT page
   } else if (pathName === "/product") {
+    console.log(query);
     res.end("This is the PRODUCT");
 
     // #10 API
