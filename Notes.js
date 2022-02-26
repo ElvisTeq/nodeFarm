@@ -186,15 +186,42 @@
 // #12
 // => Using Modules 2: Our own modules
 
+// Exporting
+// => module.exports = function
+
+// Importing
+// const name = require('./folder/file)
+// ./ = this file location / folder / file
+
 ///////////////////////////////////////////////////////////////////
 
 // #13
 // => Introduction to NPM and the package.json File
 
+// ----------------------------------- npm init
+// creates "package.json" file
+
 ///////////////////////////////////////////////////////////////////
 
 // #14
 // => Types of packages and Installs
+
+// ---------------------------------- npm i nodemon --save-dev
+// => don't have to run node index.js every time to show changes
+
+// ---------------------------------- --save-dev
+// to save as a devDependencies
+
+// ---------------------------------- npm i nodemon --global
+// downloads dependencia globally
+
+// ---------------------------------- nodemon index.js
+// instead of node index.js
+// => to ruin nodemon
+// => only work this way if nodemon is installed globally
+
+// if not, we need to change "scripts": "start": "nodemon index.js" in 'package,json'
+// npm start => to make in run
 
 ///////////////////////////////////////////////////////////////////
 
