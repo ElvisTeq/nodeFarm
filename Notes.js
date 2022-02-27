@@ -274,6 +274,16 @@
 // "package-lock.json" => contains all the dependencies data we are using and its versions
 // "package.json"  => contains the dependencies we are using so "npm install" works
 
+// git rm -r --cached node_modules
+// delete folder
+
+// git rm --cached node_modules
+// delete file
+
+// git commit -am
+// git add -A
+// git commit
+
 ///////////////////////////////////////////////////////////////////
 
 // #17
