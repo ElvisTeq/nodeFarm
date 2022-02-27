@@ -228,10 +228,51 @@
 // #15
 // => Using Modules 3: 3rd Party Modules
 
+// ---------------------------------- require("slugify")
+// module was used to manipulate the URL ID values "slugs"
+// slugs => alternative way of naming the URL ID
+
 ///////////////////////////////////////////////////////////////////
 
 // #16
 // => Package versioning and Updating
+
+// Ex
+// "version": "^1.18.11"
+// .11 => Patch version, to fix bugs
+// .18 => Minor version, introduces new features, 'no breaking changes'
+// 1 => Major version, new releases, with breaking changes
+// ^ => default by NPM = means we can switch and use different 'Minor versions'
+
+// ------------------------------------- npm outdated
+// to see all outdated dependencies
+
+// ------------------------------------- npm i slugify@1.0.0
+// to install specific version
+// @1.0.0 => the version of slugify to install
+
+// ------------------------------------- npm update slugify
+// update to last version
+
+// ------------------------------------- '~'
+// "version": "~1.0.0"
+// ~ => will only accept 'Path version' changes
+// safest option for bug fixes
+
+// ------------------------------------- '*'
+// "version": "*1.0.0"
+// * => will accept all version changes
+
+// ------------------------------------- npm unistall slugify
+// to unistall a dependencie
+
+// ------------------------------------- npm install
+// Will aotumatically install all the dependencies we need in our code
+// So we dont have to send the whole 'node_modules' folder
+
+// ********* Always share "package-lock.json" & "package.json" file
+// "package-lock.json" => contains all the dependencies data we are using and its versions
+// "package.json"  => contains the dependencies we are using so "npm install" works
 
 ///////////////////////////////////////////////////////////////////
 

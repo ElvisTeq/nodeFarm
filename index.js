@@ -13,8 +13,12 @@ const { CLIENT_RENEG_LIMIT } = require("tls");
 // #7
 const url = require("url");
 
-const replaceTemplate = require("./modules/replaceTemplate");
+// #15
+const slugify = require("slugify");
+// to manipulate URL ID "slugs"
+
 // importing module
+const replaceTemplate = require("./modules/replaceTemplate");
 
 //////////////////////////////////////////////////////////////
 
@@ -116,8 +120,13 @@ const tempProduct = fs.readFileSync(
 const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
 // `${dirname}` => current location = "dir"
 const dataObj = JSON.parse(data);
-// _________________________________________________________
 
+// #15 _______________________________________________________
+const slugs = dataObj.map((el) => slugify(el.productName, { lower: true }));
+console.log(slugs);
+// changes dataObg.productName => to lower case, separated by '-'
+
+// ___________________________________________________________
 const server = http.createServer((req, res) => {
   // #11 ___________________________________________________
   const baseURL = `http://${req.headers.host}`;
