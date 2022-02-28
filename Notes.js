@@ -282,12 +282,16 @@
 
 // git commit -am
 // git add -A
-// git commit
+// git commit -m ""
 
 ///////////////////////////////////////////////////////////////////
 
 // #17
 // => Setting up Prettier in VS Code
+
+// Recommended to change option manually, creating a file
+// .prettierrc => file created to config prettier extension manually
+// for everyone to see my configurations.
 
 ///////////////////////////////////////////////////////////////////
 

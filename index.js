@@ -4,21 +4,21 @@ const hello = "Hello World";
 console.log(hello);
 */
 
-const fs = require("fs");
+const fs = require('fs');
 
 // #6
-const http = require("http");
-const { CLIENT_RENEG_LIMIT } = require("tls");
+const http = require('http');
+const { CLIENT_RENEG_LIMIT } = require('tls');
 
 // #7
-const url = require("url");
+const url = require('url');
 
 // #15
-const slugify = require("slugify");
+const slugify = require('slugify');
 // to manipulate URL ID "slugs"
 
 // importing module
-const replaceTemplate = require("./modules/replaceTemplate");
+const replaceTemplate = require('./modules/replaceTemplate');
 
 //////////////////////////////////////////////////////////////
 
@@ -103,21 +103,21 @@ server.listen(8000, "127.0.0.1", () => {
 
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
-  "utf-8"
+  'utf-8'
 );
 
 const tempCard = fs.readFileSync(
   `${__dirname}/templates/template-card.html`,
-  "utf-8"
+  'utf-8'
 );
 
 const tempProduct = fs.readFileSync(
   `${__dirname}/templates/template-product.html`,
-  "utf-8"
+  'utf-8'
 );
 
 // #8 ______________________________________________________
-const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8');
 // `${dirname}` => current location = "dir"
 const dataObj = JSON.parse(data);
 
@@ -134,7 +134,7 @@ const server = http.createServer((req, res) => {
   // => Object conatining URL data
   // console.log(requestURL);
   const pathName = requestURL.pathname;
-  const query = requestURL.searchParams.get("id");
+  const query = requestURL.searchParams.get('id');
   // .searchParams returns this: URLSearchParams { 'id' => '1' }
   // => ID was inside 'searchParams'
   // ".get('id')"  => to get id number
@@ -149,24 +149,24 @@ const server = http.createServer((req, res) => {
   // _______________________________________________________
 
   // #10 OVERVIEW page
-  if (pathName === "/" || pathName === "/overview") {
+  if (pathName === '/' || pathName === '/overview') {
     // '/' => empthy = mainMenu
     // overview => will be main menu too
 
-    res.writeHead(200, { "Content-type": "text/html" });
+    res.writeHead(200, { 'Content-type': 'text/html' });
 
     const cardsHtml = dataObj
       .map((el) => replaceTemplate(tempCard, el))
-      .join("");
+      .join('');
 
-    const output = tempOverview.replace("{%PRODUCT_CARDS%}", cardsHtml);
+    const output = tempOverview.replace('{%PRODUCT_CARDS%}', cardsHtml);
 
     res.end(output);
 
     // #10 PRODUCT page
-  } else if (pathName === "/product") {
+  } else if (pathName === '/product') {
     // #11 _________________________________________________
-    res.writeHead(200, { "COntent-type": "text/html" });
+    res.writeHead(200, { 'COntent-type': 'text/html' });
     const product = dataObj[query];
     const output = replaceTemplate(tempProduct, product);
 
@@ -175,8 +175,8 @@ const server = http.createServer((req, res) => {
 
     // #10 API
     // #8 ___________________________________________________
-  } else if (pathName === "/api") {
-    res.writeHead(200, { "Content-type": "application/json" });
+  } else if (pathName === '/api') {
+    res.writeHead(200, { 'Content-type': 'application/json' });
     // Telling browser we are sending back JSON
     res.end(data);
     // ______________________________________________________
@@ -184,18 +184,18 @@ const server = http.createServer((req, res) => {
     // #10 Not Found
   } else {
     res.writeHead(404, {
-      "Content-type": "text/html",
+      'Content-type': 'text/html',
       // Telling browser we sending text/HTML
-      "my-own-header": "Hello-world",
+      'my-own-header': 'Hello-world',
       // This is for fun
     });
     // Logs error on console
-    res.end("<h1>Page not found!</h1>");
+    res.end('<h1>Page not found!</h1>');
   }
 });
 
-server.listen(8000, "127.0.0.1", () => {
-  console.log("Listening to request on port 8000");
+server.listen(8000, '127.0.0.1', () => {
+  console.log('Listening to request on port 8000');
 });
 
 //////////////////////////////////////////////////////////////
